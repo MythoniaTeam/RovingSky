@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://chntt8rpjgw4"]
+
+[ext_resource type="Script" path="res://Interactable.gd" id="1_y3k8i"]
+[ext_resource type="Texture2D" uid="uid://b2imse2k3lgrp" path="res://Sail.png" id="2_afjo4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d7sgm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s78cd"]
+size = Vector2(4, 12)
+
+[node name="Sail" type="Area2D"]
+z_index = 12
+z_as_relative = false
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_y3k8i")
+
+[node name="Sail" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(24, 7)
+texture = ExtResource("2_afjo4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 0.863938
+shape = SubResource("CircleShape2D_d7sgm")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+gravity_scale = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+z_index = 18
+z_as_relative = false
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_s78cd")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

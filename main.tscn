@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cxbo0d73ej377"]
+
+[ext_resource type="PackedScene" uid="uid://b707qdwdky0w6" path="res://ship.tscn" id="1_b2psl"]
+[ext_resource type="Script" path="res://main.gd" id="1_egjkn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_45ixs"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_egjkn")
+
+[node name="Ship" parent="." instance=ExtResource("1_b2psl")]
+
+[node name="TestBarrier" type="RigidBody2D" parent="."]
+position = Vector2(917, 246)
+gravity_scale = 0.0
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TestBarrier"]
+scale = Vector2(6, 6)
+shape = SubResource("RectangleShape2D_45ixs")
